@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+
+    <property>
+        <name>afo.app.name</name>
+        <value>roberta_review_classifier</value>
+    </property>
+    <property>
+        <name>afo.app.queue</name>
+        <value>root.gh_training.hadoop-poimining.tensorflow</value>
+    </property>
+    <property>
+        <name>afo.engine.tensorflow.virtualenv.name</name>
+        <value>tensorflow_1_10_0</value>
+    </property>
+    <property>
+        <name>afo.prefetch.limited.gb</name>
+        <value>1500</value>
+    </property>
+    <!-- defined ps and worker size -->
+    <property>
+        <name>parameter.servers</name>
+        <value>0</value>
+    </property>
+    <property>
+        <name>workers</name>
+        <value>1</value>
+    </property>
+    <!-- defined ps/worker resource -->
+    <property>
+        <name>worker.memory</name>
+        <value>20480</value>
+    </property>
+    <property>
+        <name>worker.vcore</name>
+        <value>10</value>
+    </property>
+    <property>
+        <name>worker.gpu</name>
+        <value>1</value>
+    </property>
+    <!-- defined ps/worker main python script -->
+    <property>
+        <name>worker.script</name>
+        <value>python run_classifier.py</value>
+    </property>
+    <!-- defined worker python script's FLAGS input args -->
+    <property>
+        <name>args.train_batch_size</name>
+        <value>512</value>
+    </property>
+    <property>
+        <name>args.num_train_epochs</name>
+        <value>10</value>
+    </property>
+    <property>
+        <name>args.initial_learning_rate</name>
+        <value>0.00005</value>
+    </property>
+    <property>
+        <name>worker.input.key</name>
+        <value>args.path</value>
+    </property>
+    <property>
+    <!-- worker 拉取后的文件是否 打平，此属性默认为true -->
+        <name>worker.input.flatten</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>args.path</name>
+        <value>viewfs://hadoop-meituan/ghnn01/user/hadoop-poimining/zhujingya/bert/roberta/chinese_roberta_wwm_ext</value>
+    </property>
+    <property>
+        <name>args.data_dir</name>
+        <value>bert-master/data</value>
+    </property>
+    <property>
+        <name>args.output_dir</name>
+        <value>viewfs://hadoop-meituan/ghnn01/user/hadoop-poimining/zhujingya/bert/roberta/output</value>
+    </property>
+    <property>
+        <name>args.bert_dir</name>
+        <value>input</value>
+    </property>
+    <property>
+        <name>args.LOGS_PATH</name>
+        <value>viewfs://hadoop-meituan/ghnn01/user/hadoop-poimining/zhujingya/bert/roberta</value>
+    </property>
+    <!-- defined tensor_board log_dir -->
+    <property>
+        <name>with.tensor.board</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>board.log_dir</name>
+        <value>viewfs://hadoop-meituan/ghnn01/user/hadoop-poimining/zhujingya/bert/roberta</value>
+    </property>
+</configuration>
